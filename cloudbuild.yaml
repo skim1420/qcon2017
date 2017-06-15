@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/skim1420/qcon2017"]
+    env: ["PROJECT_ROOT=github.com/skim1420/qcon2017"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/qcon-2017-workshop/qcon2017:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/qcon-2017-workshop/qcon2017:$REVISION_ID"
